@@ -7,15 +7,17 @@ class ColorUtil{
       throw 'color缺失#';
     }
     if(color.length != 7){
-      throw 'color书写错误';
+      throw 'color书写错误，不是7位';
     }
   }
 
+  ///字符串颜色转Color
   static Color getColor(String color){
     isValidColor(color);
     return Color(int.parse(color.replaceAll('#', '0xff')));
   }
 
+  ///带透明度的颜色
   static Color getAlphaColor(String color, {double alpha}){
     isValidColor(color);
     int hex = int.parse(color.replaceAll('#', '0x'));
