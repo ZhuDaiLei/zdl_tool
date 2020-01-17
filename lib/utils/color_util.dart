@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-class StrUtil{
+class ColorUtil{
 
   static isValidColor(String color){
     if(!color.contains('#')){
