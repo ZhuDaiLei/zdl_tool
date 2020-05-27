@@ -43,4 +43,8 @@ class ColorUtil {
     return Color.fromARGB(
         255, random.nextInt(255), random.nextInt(255), random.nextInt(255));
   }
+
+  static const Color text_color_333 = Color(0xff333333);
+  static const Color text_color_666 = Color(0xff666666);
+  static const Color text_color_999 = Color(0xff999999);
 }
