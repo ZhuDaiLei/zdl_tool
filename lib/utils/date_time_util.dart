@@ -1,4 +1,4 @@
-
+import 'package:intl/intl.dart';
 import 'package:zdl_tool/utils/global.dart';
 
 /// @author zdl
@@ -7,6 +7,11 @@ import 'package:zdl_tool/utils/global.dart';
 /// description 日期时间相关工具类
 
 class DateTimeUtil {
+  static const String formatDefault = 'yyyy-MM-dd HH:mm:ss';
+  static const String formatYMD = 'yyyy-MM-dd';
+  static const String formatHMS = 'HH:mm:ss';
+  static const String formatYMDHM = 'yyyy-MM-dd HH:mm';
+
   ///获取年
   static getYear() => DateTime.now().year;
 
@@ -28,9 +33,6 @@ class DateTimeUtil {
   ///获取周几
   static getWeekday() => DateTime.now().weekday;
 
-  ///获取毫秒
-  static getCurrentMillisecond() => DateTime.now().millisecond;
-
   ///获取微秒
   static getCurrentMillisecondsSinceEpoch() =>
       DateTime.now().millisecondsSinceEpoch;
@@ -38,7 +40,7 @@ class DateTimeUtil {
   ///获取季度
   ///month: 不传则获取本月季度
   static getQuarter({int month}) {
-    if(Global.isEmpty(month)) month = getMonth();
+    if (Global.isEmpty(month)) month = getMonth();
     int quarter = 0;
     switch (month) {
       case 1:
@@ -62,9 +64,33 @@ class DateTimeUtil {
         quarter = 4;
         break;
       default:
-        throw('月份错误，请检查');
+        throw ('月份错误，请检查');
         break;
     }
     return quarter;
+  }
+
+  ///在当前时间下，指定往前、往后几天
+  ///days > 0，为往后多少天；days < 0，为往前几天
+  static getAssignDay({int days = 0}) {
+    int time;
+    String end;
+    if (days > 0) {
+      time = DateTime.now().add(Duration(days: days)).millisecondsSinceEpoch;
+      end = ' 23:59:59';
+    } else {
+      time = DateTime.now()
+          .subtract(Duration(days: days.abs()))
+          .millisecondsSinceEpoch;
+      end = ' 00:00:00';
+    }
+    return '${_formatTime(time, format: formatYMD)}$end';
+  }
+
+  ///格式化时间
+  static _formatTime(int time, {String format = formatDefault}) {
+    DateFormat df = DateFormat(format);
+    DateTime date = DateTime.fromMillisecondsSinceEpoch(time);
+    return df.format(date);
   }
 }
