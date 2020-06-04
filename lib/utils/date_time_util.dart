@@ -87,6 +87,10 @@ class DateTimeUtil {
     return '${_formatTime(time, format: formatYMD)}$end';
   }
 
+  ///获取今天开始的时间或者结束的时间
+  static getCurrentDay({bool isEnd = true}) =>
+      '${_formatTime(getCurrentMillisecondsSinceEpoch(), format: formatYMD)} ${isEnd ? '23:59:59' : '00:00:00'}';
+
   ///格式化时间
   static _formatTime(int time, {String format = formatDefault}) {
     DateFormat df = DateFormat(format);
