@@ -84,15 +84,15 @@ class DateTimeUtil {
           .millisecondsSinceEpoch;
       end = ' 00:00:00';
     }
-    return '${_formatTime(time, format: formatYMD)}$end';
+    return '${time2str(time, format: formatYMD)}$end';
   }
 
   ///获取今天开始的时间或者结束的时间
   static getCurrentDay({bool isEnd = true}) =>
-      '${_formatTime(getCurrentMillisecondsSinceEpoch(), format: formatYMD)} ${isEnd ? '23:59:59' : '00:00:00'}';
+      '${time2str(getCurrentMillisecondsSinceEpoch(), format: formatYMD)} ${isEnd ? '23:59:59' : '00:00:00'}';
 
-  ///格式化时间
-  static _formatTime(int time, {String format = formatDefault}) {
+  ///时间戳转字符串日期
+  static time2str(int time, {String format = formatDefault}) {
     DateFormat df = DateFormat(format);
     DateTime date = DateTime.fromMillisecondsSinceEpoch(time);
     return df.format(date);
