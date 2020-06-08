@@ -13,33 +13,33 @@ class DateTimeUtil {
   static const String formatYMDHM = 'yyyy-MM-dd HH:mm';
 
   ///获取年
-  static getYear() => DateTime.now().year;
+  static int getYear() => DateTime.now().year;
 
   ///获取月
-  static getMonth() => DateTime.now().month;
+  static int getMonth() => DateTime.now().month;
 
   ///获取日
-  static getDay() => DateTime.now().day;
+  static int getDay() => DateTime.now().day;
 
   ///获取时
-  static getHour() => DateTime.now().hour;
+  static int getHour() => DateTime.now().hour;
 
   ///获取分
-  static getMinute() => DateTime.now().minute;
+  static int getMinute() => DateTime.now().minute;
 
   ///获取秒
-  static getSecond() => DateTime.now().second;
+  static int getSecond() => DateTime.now().second;
 
   ///获取周几
-  static getWeekday() => DateTime.now().weekday;
+  static int getWeekday() => DateTime.now().weekday;
 
   ///获取微秒
-  static getCurrentMillisecondsSinceEpoch() =>
+  static int getCurrentMillisecondsSinceEpoch() =>
       DateTime.now().millisecondsSinceEpoch;
 
   ///获取季度
   ///month: 不传则获取本月季度
-  static getQuarter({int month}) {
+  static int getQuarter({int month}) {
     if (Global.isEmpty(month)) month = getMonth();
     int quarter = 0;
     switch (month) {
@@ -72,7 +72,7 @@ class DateTimeUtil {
 
   ///在当前时间下，指定往前、往后几天
   ///days > 0，为往后多少天；days < 0，为往前几天
-  static getAssignDay({int days = 0}) {
+  static String getAssignDay({int days = 0}) {
     int time;
     String end;
     if (days > 0) {
@@ -88,11 +88,11 @@ class DateTimeUtil {
   }
 
   ///获取今天开始的时间或者结束的时间
-  static getCurrentDay({bool isEnd = true}) =>
+  static String getCurrentDay({bool isEnd = true}) =>
       '${time2str(getCurrentMillisecondsSinceEpoch(), format: formatYMD)} ${isEnd ? '23:59:59' : '00:00:00'}';
 
   ///时间戳转字符串日期
-  static time2str(int time, {String format = formatDefault}) {
+  static String time2str(int time, {String format = formatDefault}) {
     DateFormat df = DateFormat(format);
     DateTime date = DateTime.fromMillisecondsSinceEpoch(time);
     return df.format(date);
