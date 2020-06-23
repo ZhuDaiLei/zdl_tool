@@ -54,7 +54,9 @@ class Global {
   ///是否是车牌
   static bool isCarNumber(String str) => isEmpty(str) ? false : str.isCarNumber;
 
-  static T dealNull<T>(T msg, {String defaultMsg = '无'}){
-    return isEmpty(msg) ? defaultMsg : msg;
+  static String dealNull(String msg, {String defaultMsg = '无'}){
+    String result;
+    result = isEmpty(msg) ? defaultMsg : msg;
+    return result;
   }
 }
