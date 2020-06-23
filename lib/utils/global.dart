@@ -10,21 +10,21 @@ import 'package:zdl_tool/extension/extension_string.dart';
 
 class Global {
   ///判空
-  static bool isEmpty(dynamic data) {
+  static bool isEmpty(var data) {
     if(null == data){
       return true;
     }
-    switch (data) {
-      case String:
+    switch (data.runtimeType.toString()) {
+      case 'String':
         return '' == (data as String).trim();
         break;
-      case int:
+      case 'int':
         return true;
         break;
-      case List:
+      case 'List':
         return (data as List).isEmpty;
         break;
-      case Map:
+      case 'Map':
         return (data as Map).isEmpty;
         break;
       default:
@@ -54,9 +54,6 @@ class Global {
   ///是否是车牌
   static bool isCarNumber(String str) => isEmpty(str) ? false : str.isCarNumber;
 
-  static String dealNull(String msg, {String defaultMsg = '无'}){
-    String result;
-    result = isEmpty(msg) ? defaultMsg : msg;
-    return result;
-  }
+  ///处理接口返回字符串
+  static String dealNull(String msg, {String defaultMsg = '无'}) =>  isEmpty(msg) ? defaultMsg : msg;
 }
