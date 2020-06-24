@@ -60,30 +60,32 @@ class IncludeWidget {
     BoxShape shape = BoxShape.rectangle,
     Gradient gradient,
   }) {
-    return Container(
-      width: width,
-      height: height,
-      alignment: alignment,
-      padding: padding,
-      margin: margin,
-      decoration: BoxDecoration(
-        image: null == bgImg
-            ? null
-            : DecorationImage(image: AssetImage(bgImg), fit: BoxFit.fill),
-        color: bgColor,
-        border: border,
-        borderRadius: borderRadius,
-        boxShadow: boxShadow,
-        shape: shape,
-        gradient: gradient,
-      ),
-      child: Text(
-        text,
-        textAlign: textAlign,
-        style: TextStyle(
-          fontSize: fontSize,
-          color: fontColor,
-          fontWeight: fontWeight,
+    return UnconstrainedBox(
+      child: Container(
+        width: width,
+        height: height,
+        alignment: alignment,
+        padding: padding,
+        margin: margin,
+        decoration: BoxDecoration(
+          image: null == bgImg
+              ? null
+              : DecorationImage(image: AssetImage(bgImg), fit: BoxFit.cover),
+          color: bgColor,
+          border: border,
+          borderRadius: borderRadius,
+          boxShadow: boxShadow,
+          shape: shape,
+          gradient: gradient,
+        ),
+        child: Text(
+          text,
+          textAlign: textAlign,
+          style: TextStyle(
+            fontSize: fontSize,
+            color: fontColor,
+            fontWeight: fontWeight,
+          ),
         ),
       ),
     );
