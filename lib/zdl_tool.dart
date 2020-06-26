@@ -1,5 +1,8 @@
 library zdl_tool;
 
+export 'extension/index_extension.dart';
+export 'utils/index_utils.dart';
+
 /// A Calculator.
 class Calculator {
   /// Returns [value] plus 1.
