@@ -75,7 +75,7 @@ class DateTimeUtil {
   static String getAssignDay({int days = 0}) {
     int time;
     String end;
-    if (days > 0) {
+    if (days >= 0) {
       time = DateTime.now().add(Duration(days: days)).millisecondsSinceEpoch;
       end = ' 23:59:59';
     } else {
