@@ -97,4 +97,18 @@ class DateTimeUtil {
     DateTime date = DateTime.fromMillisecondsSinceEpoch(time);
     return df.format(date);
   }
+
+  ///字符串转DateTime
+  static DateTime str2dateTime(String str, {String format = formatDefault}) {
+    DateFormat df = DateFormat(format);
+    DateTime dt = DateTime.now();
+    try {
+      dt = df.parse(str);
+      return dt;
+    } catch (e) {
+      print(e);
+    } finally {
+      return dt;
+    }
+  }
 }
