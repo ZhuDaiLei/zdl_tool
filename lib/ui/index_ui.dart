@@ -1,4 +1,4 @@
-export 'include_widget.dart';
+export 'package:zdl_tool/ui/include_widget.dart';
 
 
 /// @author zdl

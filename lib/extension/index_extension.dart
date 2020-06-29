@@ -1,4 +1,4 @@
-export 'extension_string.dart';
+export 'package:zdl_tool/extension/extension_string.dart';
 
 /// @author zdl
 /// date 2020/6/26 20:05

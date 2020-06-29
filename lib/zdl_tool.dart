@@ -1,8 +1,8 @@
 library zdl_tool;
 
-export 'extension/index_extension.dart';
-export 'utils/index_utils.dart';
-export 'ui/index_ui.dart';
+export 'package:zdl_tool/extension/index_extension.dart';
+export 'package:zdl_tool/utils/index_utils.dart';
+export 'package:zdl_tool/ui/index_ui.dart';
 
 /// A Calculator.
 class Calculator {
