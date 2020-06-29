@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zdl_tool/utils/color_util.dart';
 
 /// @author zdl
 /// date 2019/12/5 11:02
@@ -88,6 +89,47 @@ class IncludeWidget {
           ),
         ),
       ),
+    );
+  }
+
+  ///通用的左右布局信息展示
+  static Widget showInfoKeyValue({
+    String key,
+    String value,
+    int keyFlex = 1,
+    int valueFlex = 2,
+    Color keyColor = ColorUtil.text_color_333,
+    Color valueColor = ColorUtil.text_color_666,
+    double fontSize = 14,
+    FontWeight fontWeight = FontWeight.w600,
+  }) {
+    return Flex(
+      direction: Axis.horizontal,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: <Widget>[
+        Expanded(
+          flex: keyFlex,
+          child: Text(
+            key,
+            style: TextStyle(
+              color: keyColor,
+              fontSize: fontSize,
+              fontWeight: fontWeight,
+            ),
+          ),
+        ),
+        Expanded(
+          flex: valueFlex,
+          child: Text(
+            value,
+            style: TextStyle(
+              color: keyColor,
+              fontSize: fontSize,
+              fontWeight: fontWeight,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
