@@ -98,38 +98,47 @@ class IncludeWidget {
     String value,
     int keyFlex = 1,
     int valueFlex = 2,
+    Color bgColor = Colors.transparent,
+    EdgeInsetsGeometry padding,
+    EdgeInsetsGeometry margin,
     Color keyColor = ColorUtil.text_color_333,
     Color valueColor = ColorUtil.text_color_666,
     double fontSize = 14,
-    FontWeight fontWeight = FontWeight.w600,
+    FontWeight keyFontWeight = FontWeight.w600,
   }) {
-    return Flex(
-      direction: Axis.horizontal,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[
-        Expanded(
-          flex: keyFlex,
-          child: Text(
-            key,
-            style: TextStyle(
-              color: keyColor,
-              fontSize: fontSize,
-              fontWeight: fontWeight,
+    return Container(
+      color: bgColor,
+      padding: padding,
+      margin: margin,
+      child: Flex(
+        direction: Axis.horizontal,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Expanded(
+            flex: keyFlex,
+            child: Text(
+              key,
+              textAlign: TextAlign.start,
+              style: TextStyle(
+                color: keyColor,
+                fontSize: fontSize,
+                fontWeight: keyFontWeight,
+              ),
             ),
           ),
-        ),
-        Expanded(
-          flex: valueFlex,
-          child: Text(
-            value,
-            style: TextStyle(
-              color: keyColor,
-              fontSize: fontSize,
-              fontWeight: fontWeight,
+          Expanded(
+            flex: valueFlex,
+            child: Text(
+              value,
+              textAlign: TextAlign.end,
+              style: TextStyle(
+                color: valueColor,
+                fontSize: fontSize,
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
