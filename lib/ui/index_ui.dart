@@ -1,4 +1,4 @@
-import 'include_widget.dart';
+export 'include_widget.dart';
 
 
 /// @author zdl
