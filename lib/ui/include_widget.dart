@@ -99,7 +99,7 @@ class IncludeWidget {
     int keyFlex = 1,
     int valueFlex = 2,
     Color bgColor = Colors.transparent,
-    EdgeInsetsGeometry padding,
+    EdgeInsetsGeometry padding = const EdgeInsets.only(top: 15, bottom: 15),
     EdgeInsetsGeometry margin,
     Color keyColor = ColorUtil.text_color_333,
     Color valueColor = ColorUtil.text_color_666,
