@@ -155,6 +155,7 @@ class IncludeWidget {
     String value,
     String hintText,
     String unit,
+    TextInputType inputType,
     TextEditingController controller,
     int keyFlex = 1,
     int valueFlex = 2,
@@ -170,6 +171,8 @@ class IncludeWidget {
     EdgeInsetsGeometry contentPadding =
         const EdgeInsets.only(left: 10, top: 20, bottom: 20),
   }) {
+    value ?? '';
+    unit ?? '';
     controller ?? TextEditingController();
     controller.value = TextEditingValue(
       text: '$value$unit',
@@ -216,6 +219,7 @@ class IncludeWidget {
                     child: TextField(
                       controller: controller,
                       textAlign: TextAlign.end,
+                      keyboardType: inputType,
                       maxLines: 1,
                       readOnly: readOnly,
                       decoration: InputDecoration(
@@ -232,7 +236,7 @@ class IncludeWidget {
                         fontSize: fontSize,
                       ),
                       onChanged: (value) {
-                        if (null != unit) {
+                        if (unit.isNotEmpty) {
                           controller.value = TextEditingValue(
                             text: '$value$unit',
                             selection: TextSelection.fromPosition(
