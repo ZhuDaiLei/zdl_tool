@@ -236,19 +236,16 @@ class IncludeWidget {
                         color: valueColor,
                         fontSize: fontSize,
                       ),
-                      onChanged: (value) {
-                        if (unit.isNotEmpty) {
-                          controller.value = TextEditingValue(
-                            text: '$value$unit',
-                            selection: TextSelection.fromPosition(
-                              TextPosition(
-                                affinity: TextAffinity.downstream,
-                                offset: value.length,
-                              ),
-                            ),
-                          );
-                        }
-                      },
+                    ),
+                  ),
+                  Visibility(
+                    visible: null != unit,
+                    child: Text(
+                      unit,
+                      style: TextStyle(
+                        color: valueColor,
+                        fontSize: fontSize,
+                      ),
                     ),
                   ),
                   SizedBox(width: 10),
