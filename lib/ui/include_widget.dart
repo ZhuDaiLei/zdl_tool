@@ -171,8 +171,8 @@ class IncludeWidget {
     EdgeInsetsGeometry contentPadding =
         const EdgeInsets.only(left: 10, top: 20, bottom: 20),
   }) {
-//    value = value ?? '';
-//    unit = unit ?? '';
+    value = value ?? '';
+    unit = unit ?? '';
     controller = controller ?? TextEditingController();
     controller.value = controller.value.copyWith(
       text: '$value$unit',
@@ -195,7 +195,8 @@ class IncludeWidget {
           children: <Widget>[
             Expanded(
               flex: keyFlex,
-              child: Center(
+              child: Container(
+                alignment: Alignment.centerLeft,
                 child: Text(
                   key,
                   textAlign: TextAlign.start,
