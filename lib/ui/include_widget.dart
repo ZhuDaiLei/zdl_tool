@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:zdl_tool/utils/color_util.dart';
 
 /// @author zdl
@@ -183,6 +184,10 @@ class IncludeWidget {
       ),
     );
     bool readOnly = null != onTap;
+    Pattern reg;
+    if(inputType == TextInputType.number || inputType == TextInputType.phone){
+      reg = RegExp('[0-9]');
+    }
     return InkWell(
       onTap: onTap,
       child: Container(
@@ -222,6 +227,9 @@ class IncludeWidget {
                       keyboardType: inputType,
                       maxLines: 1,
                       readOnly: readOnly,
+                      inputFormatters: [
+                        WhitelistingTextInputFormatter(reg),
+                      ],
                       decoration: InputDecoration(
                         hintText: hintText,
                         hintStyle: TextStyle(
