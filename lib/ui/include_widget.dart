@@ -185,7 +185,7 @@ class IncludeWidget {
     );
     bool readOnly = null != onTap;
     Pattern reg;
-    if(inputType == TextInputType.number || inputType == TextInputType.phone){
+    if (inputType == TextInputType.number || inputType == TextInputType.phone) {
       reg = RegExp('[0-9]');
     }
     return InkWell(
@@ -228,7 +228,7 @@ class IncludeWidget {
                       maxLines: 1,
                       readOnly: readOnly,
                       inputFormatters: [
-                        WhitelistingTextInputFormatter(reg),
+                        if (null != reg) WhitelistingTextInputFormatter(reg),
                       ],
                       decoration: InputDecoration(
                         hintText: hintText,
