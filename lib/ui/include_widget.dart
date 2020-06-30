@@ -172,10 +172,9 @@ class IncludeWidget {
         const EdgeInsets.only(left: 10, top: 20, bottom: 20),
   }) {
     value = value ?? '';
-    unit = unit ?? '';
     controller = controller ?? TextEditingController();
     controller.value = controller.value.copyWith(
-      text: '$value$unit',
+      text: value,
       selection: TextSelection.fromPosition(
         TextPosition(
           affinity: TextAffinity.downstream,
@@ -239,7 +238,7 @@ class IncludeWidget {
                     ),
                   ),
                   Visibility(
-                    visible: null != unit,
+                    visible: unit.isNotEmpty,
                     child: Text(
                       unit,
                       style: TextStyle(
