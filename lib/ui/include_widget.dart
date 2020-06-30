@@ -230,17 +230,12 @@ class IncludeWidget {
                         ),
                         contentPadding: contentPadding,
                         border: InputBorder.none,
+                        suffixText: unit,
+                        suffixStyle: TextStyle(
+                          color: valueColor,
+                          fontSize: fontSize,
+                        ),
                       ),
-                      style: TextStyle(
-                        color: valueColor,
-                        fontSize: fontSize,
-                      ),
-                    ),
-                  ),
-                  Visibility(
-                    visible: unit.isNotEmpty,
-                    child: Text(
-                      unit,
                       style: TextStyle(
                         color: valueColor,
                         fontSize: fontSize,
