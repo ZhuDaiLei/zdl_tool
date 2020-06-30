@@ -186,7 +186,7 @@ class IncludeWidget {
     bool readOnly = null != onTap;
     Pattern reg;
     if (inputType == TextInputType.number || inputType == TextInputType.phone) {
-      reg = RegExp('[0-9]');
+      reg = RegExp('[0-9.]');
     }
     return InkWell(
       onTap: onTap,
