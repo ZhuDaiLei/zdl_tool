@@ -119,6 +119,8 @@ class IncludeWidget {
             child: Text(
               key,
               textAlign: TextAlign.start,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
               style: TextStyle(
                 color: keyColor,
                 fontSize: fontSize,
@@ -126,11 +128,14 @@ class IncludeWidget {
               ),
             ),
           ),
+          SizedBox(width: 10),
           Expanded(
             flex: valueFlex,
             child: Text(
               value,
               textAlign: TextAlign.end,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
               style: TextStyle(
                 color: valueColor,
                 fontSize: fontSize,
@@ -138,6 +143,111 @@ class IncludeWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  ///通用的左右布局信息输入、选择
+  static Widget inputKeyValue({
+    String key,
+    String value,
+    String hintText,
+    String unit,
+    TextEditingController controller,
+    int keyFlex = 1,
+    int valueFlex = 2,
+    Color bgColor = Colors.transparent,
+    EdgeInsetsGeometry margin,
+    Color keyColor = ColorUtil.text_color_333,
+    Color valueColor = ColorUtil.text_color_666,
+    Color hintColor = ColorUtil.text_color_999,
+    double fontSize = 14,
+    FontWeight keyFontWeight = FontWeight.w600,
+    bool showArrowRight = false,
+    GestureTapCallback onTap,
+    EdgeInsetsGeometry contentPadding =
+        const EdgeInsets.only(left: 10, top: 20, bottom: 20),
+  }) {
+    controller ?? TextEditingController();
+    controller.value = TextEditingValue(
+      text: value,
+      selection: TextSelection.fromPosition(
+        TextPosition(
+          affinity: TextAffinity.downstream,
+          offset: value.length,
+        ),
+      ),
+    );
+    bool readOnly = null == onTap;
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        color: bgColor,
+        margin: margin,
+        child: Flex(
+          direction: Axis.horizontal,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Expanded(
+              flex: keyFlex,
+              child: Center(
+                child: Text(
+                  key,
+                  textAlign: TextAlign.start,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    color: keyColor,
+                    fontSize: fontSize,
+                    fontWeight: keyFontWeight,
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(width: 10),
+            Expanded(
+              flex: valueFlex,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Expanded(
+                    child: TextField(
+                      controller: controller,
+                      textAlign: TextAlign.end,
+                      maxLines: 1,
+                      readOnly: readOnly,
+                      decoration: InputDecoration(
+                        hintText: hintText,
+                        hintStyle: TextStyle(
+                          color: hintColor,
+                          fontSize: fontSize,
+                        ),
+                        contentPadding: contentPadding,
+                        border: InputBorder.none,
+                      ),
+                      style: TextStyle(
+                        color: valueColor,
+                        fontSize: fontSize,
+                      ),
+                      onChanged: (value) {
+                        if (null != unit) controller.text = '$value$unit';
+                      },
+                    ),
+                  ),
+                  SizedBox(width: 10),
+                  Visibility(
+                    visible: showArrowRight,
+                    child: Icon(
+                      Icons.arrow_forward_ios,
+                      color: Colors.grey,
+                      size: 10,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
