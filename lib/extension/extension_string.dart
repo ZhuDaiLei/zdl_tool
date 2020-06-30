@@ -28,7 +28,7 @@ extension ExtensionString on String {
   bool _regExp(String source) => RegExp(source).hasMatch(this.dealNull);
 
   ///验证是否是数字
-  bool get isNumber => _regExp(r'[0-9]');
+  bool get isNumber => null != this.parseDouble;
 
   ///验证是否是电话号码
   bool get isPhoneNumber => _regExp(r'^1[3-9][0-9]\d{8}$');
