@@ -174,7 +174,7 @@ class IncludeWidget {
 //    value = value ?? '';
 //    unit = unit ?? '';
     controller = controller ?? TextEditingController();
-    controller.value = TextEditingValue(
+    controller.value = controller.value.copyWith(
       text: '$value$unit',
       selection: TextSelection.fromPosition(
         TextPosition(
