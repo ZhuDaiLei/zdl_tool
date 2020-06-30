@@ -171,9 +171,9 @@ class IncludeWidget {
     EdgeInsetsGeometry contentPadding =
         const EdgeInsets.only(left: 10, top: 20, bottom: 20),
   }) {
-    value ?? '';
-    unit ?? '';
-    controller ?? TextEditingController();
+//    value = value ?? '';
+//    unit = unit ?? '';
+    controller = controller ?? TextEditingController();
     controller.value = TextEditingValue(
       text: '$value$unit',
       selection: TextSelection.fromPosition(
