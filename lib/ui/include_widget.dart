@@ -183,7 +183,7 @@ class IncludeWidget {
         ),
       ),
     );
-    bool readOnly = null == onTap;
+    bool readOnly = null != onTap;
     return InkWell(
       onTap: onTap,
       child: Container(
