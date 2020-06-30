@@ -172,7 +172,7 @@ class IncludeWidget {
   }) {
     controller ?? TextEditingController();
     controller.value = TextEditingValue(
-      text: value,
+      text: '$value$unit',
       selection: TextSelection.fromPosition(
         TextPosition(
           affinity: TextAffinity.downstream,
@@ -232,7 +232,17 @@ class IncludeWidget {
                         fontSize: fontSize,
                       ),
                       onChanged: (value) {
-                        if (null != unit) controller.text = '$value$unit';
+                        if (null != unit) {
+                          controller.value = TextEditingValue(
+                            text: '$value$unit',
+                            selection: TextSelection.fromPosition(
+                              TextPosition(
+                                affinity: TextAffinity.downstream,
+                                offset: value.length,
+                              ),
+                            ),
+                          );
+                        }
                       },
                     ),
                   ),
