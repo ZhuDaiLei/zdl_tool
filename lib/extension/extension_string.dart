@@ -27,6 +27,9 @@ extension ExtensionString on String {
 
   bool _regExp(String source) => RegExp(source).hasMatch(this.dealNull);
 
+  ///验证是否是数字
+  bool get isNumber => _regExp(r'[0-9]');
+
   ///验证是否是电话号码
   bool get isPhoneNumber => _regExp(r'^1[3-9][0-9]\d{8}$');
 
@@ -52,7 +55,7 @@ extension ExtensionString on String {
   String findChar(int num) => num > this.dealNull.length ? '' : this.dealNull.substring(num-1, num);
 
   ///字符串转颜色
-  Color toColor({double alpha, Color defaultColor = ColorUtil.text_color_333}) {
+  Color turnColor({double alpha, Color defaultColor = ColorUtil.text_color_333}) {
     try{
       switch(this.dealNull.length){
         case 0:
