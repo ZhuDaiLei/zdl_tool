@@ -105,6 +105,7 @@ class IncludeWidget {
     Color valueColor = ColorUtil.text_color_666,
     double fontSize = 14,
     FontWeight keyFontWeight = FontWeight.w600,
+    FontWeight valueFontWeight = FontWeight.normal,
   }) {
     return Container(
       color: bgColor,
@@ -139,6 +140,7 @@ class IncludeWidget {
               style: TextStyle(
                 color: valueColor,
                 fontSize: fontSize,
+                fontWeight: valueFontWeight,
               ),
             ),
           ),
