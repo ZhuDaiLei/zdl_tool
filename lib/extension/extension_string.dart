@@ -92,4 +92,19 @@ extension ExtensionString on String {
   ///处理后台返回数据有可能为空的情况
   ///def 默认值
   String dealData({String def = ''}) => this.isNull ? def : this;
+
+  ///判断是否是日期字符串
+  bool get isDateStr => _regExp(r'(^\d{4}$)|(^\d{4}[-.]\d{2}$)|(^\d{4}[-.]\d{2}[-.]\d{2}$|(^\d{4}[-.]\d{2}[-.]\d{2} \d{2}$)|(^\d{4}[-.]\d{2}[-.]\d{2} \d{2}:\d{2}$)|(^\d{4}[-.]\d{2}[-.]\d{2} \d{2}:\d{2}:\d{2}$)');
+
+  ///获取字符串中年
+  String get getYear => this.dealNull.length >= 4 ? this.substring(0,4) : '';
+
+  ///获取字符串中月
+  String get getMonth => this.dealNull.length >= 7 ? this.substring(5,7) : '';
+
+  ///获取字符串中日
+  String get getDay => this.dealNull.length >= 10 ? this.substring(8,10) : '';
+
+  ///获取字符串中月日
+  String get getMonthDay => this.dealNull.length >= 10 ? this.substring(5,10) : '';
 }
