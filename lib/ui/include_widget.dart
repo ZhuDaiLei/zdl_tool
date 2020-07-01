@@ -221,32 +221,35 @@ class IncludeWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Expanded(
-                    child: TextField(
-                      controller: controller,
-                      textAlign: TextAlign.end,
-                      keyboardType: inputType,
-                      maxLines: 1,
-                      readOnly: readOnly,
-                      inputFormatters: [
-                        if (null != reg) WhitelistingTextInputFormatter(reg),
-                      ],
-                      decoration: InputDecoration(
-                        hintText: hintText,
-                        hintStyle: TextStyle(
-                          color: hintColor,
-                          fontSize: fontSize,
+                    child: InkWell(
+                      onTap: onTap,
+                      child: TextField(
+                        controller: controller,
+                        textAlign: TextAlign.end,
+                        keyboardType: inputType,
+                        maxLines: 1,
+                        readOnly: readOnly,
+                        inputFormatters: [
+                          if (null != reg) WhitelistingTextInputFormatter(reg),
+                        ],
+                        decoration: InputDecoration(
+                          hintText: hintText,
+                          hintStyle: TextStyle(
+                            color: hintColor,
+                            fontSize: fontSize,
+                          ),
+                          contentPadding: contentPadding,
+                          border: InputBorder.none,
+                          suffixText: unit,
+                          suffixStyle: TextStyle(
+                            color: valueColor,
+                            fontSize: fontSize,
+                          ),
                         ),
-                        contentPadding: contentPadding,
-                        border: InputBorder.none,
-                        suffixText: unit,
-                        suffixStyle: TextStyle(
+                        style: TextStyle(
                           color: valueColor,
                           fontSize: fontSize,
                         ),
-                      ),
-                      style: TextStyle(
-                        color: valueColor,
-                        fontSize: fontSize,
                       ),
                     ),
                   ),
