@@ -55,7 +55,7 @@ extension ExtensionString on String {
   String findChar(int num) => num > this.dealNull.length ? '' : this.dealNull.substring(num-1, num);
 
   ///字符串转颜色
-  Color turnColor({double alpha, Color defaultColor = ColorUtil.text_color_333}) {
+  Color toColor({double alpha, Color defaultColor = ColorUtil.text_color_333}) {
     try{
       switch(this.dealNull.length){
         case 0:
