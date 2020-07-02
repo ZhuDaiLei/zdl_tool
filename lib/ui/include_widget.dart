@@ -188,6 +188,34 @@ class IncludeWidget {
     if (inputType == TextInputType.number || inputType == TextInputType.phone) {
       reg = RegExp('[0-9.]');
     }
+    TextField textField = TextField(
+      controller: controller,
+      textAlign: TextAlign.end,
+      keyboardType: inputType,
+      maxLines: 1,
+      readOnly: readOnly,
+      inputFormatters: [
+        if (null != reg) WhitelistingTextInputFormatter(reg),
+      ],
+      decoration: InputDecoration(
+        hintText: hintText,
+        hintStyle: TextStyle(
+          color: hintColor,
+          fontSize: fontSize,
+        ),
+        contentPadding: contentPadding,
+        border: InputBorder.none,
+        suffixText: unit,
+        suffixStyle: TextStyle(
+          color: valueColor,
+          fontSize: fontSize,
+        ),
+      ),
+      style: TextStyle(
+        color: valueColor,
+        fontSize: fontSize,
+      ),
+    );
     return InkWell(
       onTap: onTap,
       child: Container(
@@ -221,37 +249,8 @@ class IncludeWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Expanded(
-                    child: InkWell(
-                      onTap: onTap,
-                      child: TextField(
-                        controller: controller,
-                        textAlign: TextAlign.end,
-                        keyboardType: inputType,
-                        maxLines: 1,
-                        readOnly: readOnly,
-                        inputFormatters: [
-                          if (null != reg) WhitelistingTextInputFormatter(reg),
-                        ],
-                        decoration: InputDecoration(
-                          hintText: hintText,
-                          hintStyle: TextStyle(
-                            color: hintColor,
-                            fontSize: fontSize,
-                          ),
-                          contentPadding: contentPadding,
-                          border: InputBorder.none,
-                          suffixText: unit,
-                          suffixStyle: TextStyle(
-                            color: valueColor,
-                            fontSize: fontSize,
-                          ),
-                        ),
-                        style: TextStyle(
-                          color: valueColor,
-                          fontSize: fontSize,
-                        ),
-                      ),
-                    ),
+                    //IgnorePointer
+                    child: readOnly ? IgnorePointer(child: textField) : textField,
                   ),
                   SizedBox(width: 10),
                   Visibility(
