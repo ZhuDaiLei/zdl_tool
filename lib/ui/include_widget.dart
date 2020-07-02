@@ -172,17 +172,18 @@ class IncludeWidget {
     EdgeInsetsGeometry contentPadding =
         const EdgeInsets.only(left: 10, top: 20, bottom: 20),
   }) {
-    value = value ?? '';
     controller = controller ?? TextEditingController();
-    controller.value = controller.value.copyWith(
-      text: value,
-      selection: TextSelection.fromPosition(
-        TextPosition(
-          affinity: TextAffinity.downstream,
-          offset: value.length,
+    if (null != value) {
+      controller.value = controller.value.copyWith(
+        text: value,
+        selection: TextSelection.fromPosition(
+          TextPosition(
+            affinity: TextAffinity.downstream,
+            offset: value.length,
+          ),
         ),
-      ),
-    );
+      );
+    }
     bool readOnly = null != onTap;
     Pattern reg;
     if (inputType == TextInputType.number || inputType == TextInputType.phone) {
@@ -250,7 +251,8 @@ class IncludeWidget {
                 children: <Widget>[
                   Expanded(
                     //IgnorePointer
-                    child: readOnly ? IgnorePointer(child: textField) : textField,
+                    child:
+                        readOnly ? IgnorePointer(child: textField) : textField,
                   ),
                   SizedBox(width: 10),
                   Visibility(
