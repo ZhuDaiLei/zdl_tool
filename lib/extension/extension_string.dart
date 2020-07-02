@@ -50,6 +50,9 @@ extension ExtensionString on String {
       _regExp(
           r'(^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Za-z]{1}[A-Za-z]{1}[警京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼]{0,1}[A-Za-z0-9]{4}[A-Za-z0-9挂学警港澳]{1}$)|(^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Za-z]{1}[A-Za-z]{1}[警京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼]{0,1}[A-Za-z0-9]{4}[A-Za-z0-9挂学警港澳]{2}$)');
 
+  ///判断是否是日期字符串
+  bool get isDateStr => _regExp(r'(^\d{4}$)|(^\d{4}[-.]\d{2}$)|(^\d{4}[-.]\d{2}[-.]\d{2}$)|(^\d{4}[-.]\d{2}[-.]\d{2} \d{2}$)|(^\d{4}[-.]\d{2}[-.]\d{2} \d{2}:\d{2}$)|(^\d{4}[-.]\d{2}[-.]\d{2} \d{2}:\d{2}:\d{2}$)');
+
   ///获取字符串中第几个字符
   ///num 字符串中第几个字符，非下标
   String findChar(int num) => num > this.dealNull.length ? '' : this.dealNull.substring(num-1, num);
@@ -92,9 +95,6 @@ extension ExtensionString on String {
   ///处理后台返回数据有可能为空的情况
   ///def 默认值
   String dealData({String def = ''}) => this.isNull ? def : this;
-
-  ///判断是否是日期字符串
-  bool get isDateStr => _regExp(r'(^\d{4}$)|(^\d{4}[-.]\d{2}$)|(^\d{4}[-.]\d{2}[-.]\d{2}$|(^\d{4}[-.]\d{2}[-.]\d{2} \d{2}$)|(^\d{4}[-.]\d{2}[-.]\d{2} \d{2}:\d{2}$)|(^\d{4}[-.]\d{2}[-.]\d{2} \d{2}:\d{2}:\d{2}$)');
 
   ///获取字符串中年
   String get getYear => this.dealNull.length >= 4 ? this.substring(0,4) : '';
