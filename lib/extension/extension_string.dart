@@ -11,7 +11,7 @@ import 'package:zdl_tool/utils/color_util.dart';
 
 extension ExtensionString on String {
 
-  bool get isNull => null == this || 'null' == this || '' == this.trim();
+  bool get isNull => null == this || 'null' == this.toLowerCase() || '' == this.trim();
 
   String get dealNull => this.isNull ? '' : this;
 
@@ -22,8 +22,20 @@ extension ExtensionString on String {
   double get parseDouble => double.tryParse(this.dealNull);
 
   ///对字符串进行md5加密
-  String get generateMd5 =>
+  String get encodeMd5 =>
       hex.encode((md5.convert(Utf8Encoder().convert(this.dealNull))).bytes);
+
+  ///对字符串进行sha256加密
+  String get encodeSha256 =>
+      hex.encode((sha256.convert(Utf8Encoder().convert(this.dealNull))).bytes);
+
+  ///对字符串进行base64加密
+  String get encodeBase64 =>
+      base64Encode(utf8.encode(this.dealNull));
+
+  ///对base64解密
+  String get decodeBase64 => String.fromCharCodes(base64Decode(this.dealNull));
+
 
   bool _regExp(String source) => RegExp(source).hasMatch(this.dealNull);
 

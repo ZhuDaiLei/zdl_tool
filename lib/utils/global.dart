@@ -33,27 +33,16 @@ class Global {
     }
   }
 
-  ///md5加密
-  static String generateMd5(String str)  => isEmpty(str) ? '' : str.generateMd5;
-
-  ///验证是否是电话号码
-  static bool isPhoneNumber(String str) => isEmpty(str) ? false : str.isPhoneNumber;
-
-  ///验证是否是邮箱
-  static bool isEmail(String str) => isEmpty(str) ? false : str.isEmail;
-
-  ///是否是url
-  static bool isUrl(String str) => isEmpty(str) ? false : str.isUrl;
-
-  ///是否是身份证
-  static bool isIdCard(String str) => isEmpty(str) ? false : str.isIdCard;
-
-  ///是否是中文
-  static bool isChinese(String str) => isEmpty(str) ? false : str.isChinese;
-
-  ///是否是车牌
-  static bool isCarNumber(String str) => isEmpty(str) ? false : str.isCarNumber;
-
-  ///处理接口返回字符串
-  static String dealNull(String msg, {String defaultMsg = '无'}) =>  isEmpty(msg) ? defaultMsg : msg;
+  ///双击退出APP
+  static int last = 0;
+  static Future<bool> doubleClickBack(Function onClickBack) {
+    int now = DateTime.now().millisecondsSinceEpoch;
+    if (now - last > 1000) {
+      last = DateTime.now().millisecondsSinceEpoch;
+      if(null != onClickBack) onClickBack;
+      return Future.value(false);
+    } else {
+      return Future.value(true);
+    }
+  }
 }

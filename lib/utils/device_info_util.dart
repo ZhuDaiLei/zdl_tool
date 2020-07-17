@@ -1,4 +1,5 @@
 
+import 'dart:ui';
 import 'package:flutter/material.dart';
 
 /// @author zdl
@@ -8,8 +9,15 @@ import 'package:flutter/material.dart';
 
 class DeviceInfoUtil{
 
-  static double screenWidth(BuildContext ctx) => MediaQuery.of(ctx).size.width;
+  ///屏幕宽
+  static double screenWidth(BuildContext context) => MediaQuery.of(context).size.width;
 
+  ///屏幕高
+  static double screenHeight(BuildContext context) => MediaQuery.of(context).size.height;
 
-  static double screenHeight(BuildContext ctx) => MediaQuery.of(ctx).size.height;
+  ///当前屏幕软键盘高度，0代表软键盘未弹出，前提是所有父布局resizeToAvoidBottomInset=false
+  static double keyboardHeight(BuildContext context) => MediaQuery.of(context).viewInsets.bottom;
+
+  ///获取状态栏高度
+  static double statusHeight = MediaQueryData.fromWindow(window).padding.top;
 }

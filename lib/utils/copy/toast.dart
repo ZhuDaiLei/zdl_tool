@@ -14,8 +14,8 @@ class Toast {
   static final int TOP = 2;
 
   static void show(
-    String msg,
-    BuildContext context, {
+    BuildContext context,
+    String msg, {
     int duration = 1,
     int gravity = 0,
     Color backgroundColor = const Color(0xAA000000),
