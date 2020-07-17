@@ -58,7 +58,7 @@ class _BaseRootState extends State<BaseRoot> {
           ),
         ),
         centerTitle: widget.centerTitle,
-        leading: IconButton(
+        leading: null == widget.leading ? null : IconButton(
           icon: widget.leading,
           onPressed: widget.clickBack ??
               () {
