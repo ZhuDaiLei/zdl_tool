@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:zdl_tool/ui/widget/index_widget.dart';
+import 'package:zdl_tool/ui/widget/input_info_row.dart';
+import 'package:zdl_tool/ui/widget/show_info_row.dart';
+import 'package:zdl_tool/ui/widget/text_with_bg.dart';
 import 'package:zdl_tool/utils/color_util.dart';
 
 /// @author zdl
@@ -7,8 +11,11 @@ import 'package:zdl_tool/utils/color_util.dart';
 /// email zdl328465042@163.com
 /// description 多处复用的widget
 
+@Deprecated('please use single widget')
 class IncludeWidget {
   ///横向、纵向分割线
+  /// [Line]
+  @Deprecated('please use Line')
   static Widget line({
     Color color = const Color(0xFFF4F4F4),
     bool isHor = true,
@@ -43,6 +50,8 @@ class IncludeWidget {
   ///boxShadow: [BoxShadow(color: Colors.green,offset: Offset(5, 5),blurRadius: 10,spreadRadius: 5,)]
   ///环形渲染:RadialGradient，扫描式渐变:SweepGradient，线性渐变:LinearGradient
   ///gradient: LinearGradient(colors: [Colors.red, Colors.blue], begin: Alignment.topLeft, end: Alignment.bottomRight),
+  /// [TextWithBg]
+  @Deprecated('please use TextWithBg')
   static Widget textWithBg({
     double width,
     double height,
@@ -94,6 +103,8 @@ class IncludeWidget {
   }
 
   ///通用的左右布局信息展示
+  /// [ShowInfoRow]
+  @Deprecated('please use ShowInfoRow')
   static Widget showInfoKeyValue({
     String key,
     String value,
@@ -151,6 +162,8 @@ class IncludeWidget {
   }
 
   ///通用的左右布局信息输入、选择
+  /// [InputInfoRow]
+  @Deprecated('please use InputInfoRow')
   static Widget inputKeyValue({
     String key,
     String value,
