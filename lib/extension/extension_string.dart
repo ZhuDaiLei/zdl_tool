@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:ui';
 import 'package:convert/convert.dart';
 import 'package:crypto/crypto.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:zdl_tool/utils/color_util.dart';
 
 /// @author zdl
@@ -11,7 +12,8 @@ import 'package:zdl_tool/utils/color_util.dart';
 
 extension ExtensionString on String {
 
-  bool get isNull => null == this || 'null' == this.toLowerCase() || '' == this.trim();
+  bool get isNull =>
+      null == this || 'null' == this.toLowerCase() || '' == this.trim();
 
   String get dealNull => this.isNull ? '' : this;
 
@@ -36,6 +38,8 @@ extension ExtensionString on String {
   ///对base64解密
   String get decodeBase64 => String.fromCharCodes(base64Decode(this.dealNull));
 
+  ///是否是图片
+  bool get isImg => this.dealNull.endsWith('.png') || this.dealNull.endsWith('.jpg');
 
   bool _regExp(String source) => RegExp(source).hasMatch(this.dealNull);
 
@@ -63,24 +67,31 @@ extension ExtensionString on String {
           r'(^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Za-z]{1}[A-Za-z]{1}[警京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼]{0,1}[A-Za-z0-9]{4}[A-Za-z0-9挂学警港澳]{1}$)|(^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Za-z]{1}[A-Za-z]{1}[警京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼]{0,1}[A-Za-z0-9]{4}[A-Za-z0-9挂学警港澳]{2}$)');
 
   ///判断是否是日期字符串
-  bool get isDateStr => _regExp(r'(^\d{4}$)|(^\d{4}[-.]\d{2}$)|(^\d{4}[-.]\d{2}[-.]\d{2}$)|(^\d{4}[-.]\d{2}[-.]\d{2} \d{2}$)|(^\d{4}[-.]\d{2}[-.]\d{2} \d{2}:\d{2}$)|(^\d{4}[-.]\d{2}[-.]\d{2} \d{2}:\d{2}:\d{2}$)');
+  bool get isDateStr =>
+      _regExp(
+          r'(^\d{4}$)|(^\d{4}[-.]\d{2}$)|(^\d{4}[-.]\d{2}[-.]\d{2}$)|(^\d{4}[-.]\d{2}[-.]\d{2} \d{2}$)|(^\d{4}[-.]\d{2}[-.]\d{2} \d{2}:\d{2}$)|(^\d{4}[-.]\d{2}[-.]\d{2} \d{2}:\d{2}:\d{2}$)');
 
   ///获取字符串中第几个字符
   ///num 字符串中第几个字符，非下标
-  String findChar(int num) => num > this.dealNull.length ? '' : this.dealNull.substring(num-1, num);
+  String findChar(int num) =>
+      num > this.dealNull.length ? '' : this.dealNull.substring(num - 1, num);
 
   ///字符串转颜色
   Color toColor({double alpha, Color defaultColor = ColorUtil.text_color_333}) {
-    try{
-      switch(this.dealNull.length){
+    try {
+      switch (this.dealNull.length) {
         case 0:
           return defaultColor;
           break;
         case 3:
-          return Color(int.parse('${this.findChar(1)*2}${this.findChar(2)*2}${this.findChar(3)*2}', radix: 16) + 0xFF000000);
+          return Color(int.parse(
+              '${this.findChar(1) * 2}${this.findChar(2) * 2}${this.findChar(
+                  3) * 2}', radix: 16) + 0xFF000000);
           break;
         case 4:
-          return Color(int.parse('${this.findChar(2)*2}${this.findChar(3)*2}${this.findChar(4)*2}', radix: 16) + 0xFF000000);
+          return Color(int.parse(
+              '${this.findChar(2) * 2}${this.findChar(3) * 2}${this.findChar(
+                  4) * 2}', radix: 16) + 0xFF000000);
           break;
         case 6:
           return Color(int.parse(this, radix: 16) + 0xFF000000);
@@ -98,7 +109,7 @@ extension ExtensionString on String {
           return defaultColor;
           break;
       }
-    }catch(e){
+    } catch (e) {
       print(e);
       return defaultColor;
     }
@@ -109,14 +120,18 @@ extension ExtensionString on String {
   String dealData({String def = ''}) => this.isNull ? def : this;
 
   ///获取字符串中年
-  String get getYear => this.dealNull.length >= 4 ? this.substring(0,4) : '';
+  String get getYear => this.dealNull.length >= 4 ? this.substring(0, 4) : '';
 
   ///获取字符串中月
-  String get getMonth => this.dealNull.length >= 7 ? this.substring(5,7) : '';
+  String get getMonth => this.dealNull.length >= 7 ? this.substring(5, 7) : '';
 
   ///获取字符串中日
-  String get getDay => this.dealNull.length >= 10 ? this.substring(8,10) : '';
+  String get getDay => this.dealNull.length >= 10 ? this.substring(8, 10) : '';
 
   ///获取字符串中月日
-  String get getMonthDay => this.dealNull.length >= 10 ? this.substring(5,10) : '';
+  String get getMonthDay =>
+      this.dealNull.length >= 10 ? this.substring(5, 10) : '';
+
+  ///获取图片地址
+  String get toImgAsset => this.isImg ? 'assets/$this' : 'assets/$this.png';
 }

@@ -32,7 +32,7 @@ class BaseRoot extends StatefulWidget {
     this.backgroundColor = Colors.white,
     this.resizeToAvoidBottomInset,
     this.floatingActionButton,
-    this.title,
+    this.title = '',
     this.titleWidget,
     this.centerTitle = true,
     this.leading = const Icon(Icons.arrow_back_ios),
