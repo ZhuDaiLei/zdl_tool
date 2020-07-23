@@ -1,5 +1,6 @@
 export 'package:zdl_tool/ui/include_widget.dart';
 export 'package:zdl_tool/ui/base/index_base.dart';
+export 'package:zdl_tool/ui/widget/index_widget.dart';
 
 
 /// @author zdl
