@@ -3,6 +3,7 @@ export 'package:zdl_tool/utils/color_util.dart';
 export 'package:zdl_tool/utils/date_time_util.dart';
 export 'package:zdl_tool/utils/device_info_util.dart';
 export 'package:zdl_tool/utils/global.dart';
+export 'package:zdl_tool/utils/gps_util.dart';
 
 /// @author zdl
 /// date 2020/6/26 20:15
