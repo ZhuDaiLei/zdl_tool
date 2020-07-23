@@ -11,6 +11,7 @@ import 'package:zdl_tool/extension/extension_string.dart';
 class Global {
 
   ///处理接口返回字符串
+  @Deprecated('please use ExtensionString dealData')
   static String dealNull(String msg, {String defaultMsg = '无'}) =>  isEmpty(msg) ? defaultMsg : msg;
 
   ///判空
