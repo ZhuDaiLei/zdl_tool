@@ -9,6 +9,10 @@ import 'package:zdl_tool/extension/extension_string.dart';
 /// description
 
 class Global {
+
+  ///处理接口返回字符串
+  static String dealNull(String msg, {String defaultMsg = '无'}) =>  isEmpty(msg) ? defaultMsg : msg;
+
   ///判空
   static bool isEmpty(var data) {
     if(null == data){
