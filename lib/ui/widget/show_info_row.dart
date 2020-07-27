@@ -24,7 +24,7 @@ class ShowInfoRow extends StatelessWidget {
     this.leftFlex = 1,
     this.rightFlex = 2,
     this.bgColor = Colors.transparent,
-    this.padding = const EdgeInsets.only(top: 20, bottom: 20),
+    this.padding,
     this.margin,
     this.leftColor = const Color(0xff333333),
     this.rightColor = const Color(0xff666666),

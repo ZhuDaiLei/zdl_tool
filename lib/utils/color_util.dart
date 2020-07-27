@@ -19,6 +19,7 @@ class ColorUtil {
   }
 
   ///字符串颜色转Color
+  @Deprecated('please use ExtensionString toColor')
   static Color getColor(String color) {
     isValidColor(color);
     return Color(int.parse(color.replaceAll('#', '0xff')));

@@ -8,8 +8,8 @@ import 'package:zdl_tool/extension/extension_string.dart';
 
 class GPSUtil {
 
-  //地球半径，单位千米
-  static final double _EARTH_RADIUS = 6371.393;
+  //地球半径，单位米
+  static final double _EARTH_RADIUS = 6371393;
 
   static double _rad(double d) {
     return d * pi / 180.0;
