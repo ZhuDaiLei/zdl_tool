@@ -18,6 +18,8 @@ class TextWithDrawable extends StatelessWidget {
   final double drawableEndPadding;
   final double drawableBottomPadding;
   final double drawablePadding;
+  final EdgeInsets padding;
+  final EdgeInsets margin;
 
   TextWithDrawable({
     this.text = '',
@@ -33,6 +35,8 @@ class TextWithDrawable extends StatelessWidget {
     this.drawableEndPadding,
     this.drawableBottomPadding,
     this.drawablePadding = 0,
+    this.padding,
+    this.margin,
   });
 
   @override
@@ -108,6 +112,10 @@ class TextWithDrawable extends StatelessWidget {
 //      );
       child = onlyRowWidget;
     }
-    return child;
+    return Container(
+      padding: padding,
+      margin: margin,
+      child: child,
+    );
   }
 }
