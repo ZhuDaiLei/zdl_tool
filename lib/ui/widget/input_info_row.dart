@@ -24,6 +24,7 @@ class InputInfoRow extends StatelessWidget {
   final bool showArrowRight;
   final GestureTapCallback onTap;
   final EdgeInsetsGeometry contentPadding;
+  final bool required;
 
   InputInfoRow({
     this.left,
@@ -44,6 +45,7 @@ class InputInfoRow extends StatelessWidget {
     this.showArrowRight = false,
     this.onTap,
     this.contentPadding = const EdgeInsets.only(left: 10, top: 20, bottom: 20),
+    this.required = false,
   });
 
   @override
@@ -107,16 +109,27 @@ class InputInfoRow extends StatelessWidget {
               flex: leftFlex,
               child: Container(
                 alignment: Alignment.centerLeft,
-                child: Text(
-                  left,
-                  textAlign: TextAlign.start,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    color: leftColor,
-                    fontSize: fontSize,
-                    fontWeight: leftFontWeight,
-                  ),
+                child: Row(
+                  children: <Widget>[
+                    Text(
+                      left,
+                      textAlign: TextAlign.start,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        color: leftColor,
+                        fontSize: fontSize,
+                        fontWeight: leftFontWeight,
+                      ),
+                    ),
+                    Visibility(
+                      visible: required,
+                      child: Text(
+                        '*',
+                        style: TextStyle(color: Colors.red),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
