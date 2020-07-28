@@ -93,6 +93,7 @@ class DateTimeUtil {
 
   ///时间戳转字符串日期
   static String time2str(int time, {String format = formatDefault}) {
+    if(time.toString().length == 10) time = time*1000;
     DateFormat df = DateFormat(format);
     DateTime date = DateTime.fromMillisecondsSinceEpoch(time);
     return df.format(date);
