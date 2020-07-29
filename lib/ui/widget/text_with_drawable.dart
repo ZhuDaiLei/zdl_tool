@@ -20,6 +20,7 @@ class TextWithDrawable extends StatelessWidget {
   final double drawablePadding;
   final EdgeInsets padding;
   final EdgeInsets margin;
+  final int maxLines;
 
   TextWithDrawable({
     this.text = '',
@@ -37,6 +38,7 @@ class TextWithDrawable extends StatelessWidget {
     this.drawablePadding = 0,
     this.padding,
     this.margin,
+    this.maxLines = 1,
   });
 
   @override
@@ -47,6 +49,8 @@ class TextWithDrawable extends StatelessWidget {
         (null == drawableStart && null == drawableEnd);
     Widget txt = Text(
       text,
+      maxLines: maxLines,
+      overflow: TextOverflow.ellipsis,
       style: TextStyle(
         color: fontColor,
         fontSize: fontSize,
