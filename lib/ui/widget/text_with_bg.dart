@@ -32,6 +32,7 @@ class TextWithBg extends StatelessWidget {
   final List<BoxShadow> boxShadow;
   final BoxShape shape;
   final Gradient gradient;
+  final int maxLines;
 
   TextWithBg({
     this.width,
@@ -51,6 +52,7 @@ class TextWithBg extends StatelessWidget {
     this.boxShadow,
     this.shape = BoxShape.rectangle,
     this.gradient,
+    this.maxLines = 1,
   });
 
   @override
@@ -75,6 +77,8 @@ class TextWithBg extends StatelessWidget {
         ),
         child: Text(
           text,
+          maxLines: maxLines,
+          overflow: TextOverflow.ellipsis,
           textAlign: textAlign,
           style: TextStyle(
             fontSize: fontSize,
