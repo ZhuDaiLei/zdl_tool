@@ -11,6 +11,7 @@ class DateTimeUtil {
   static const String formatYMD = 'yyyy-MM-dd';
   static const String formatHMS = 'HH:mm:ss';
   static const String formatYMDHM = 'yyyy-MM-dd HH:mm';
+  static const String formatRFC3339 = 'yyyy-MM-dd\'T\'HH:mm:ss\'Z\'';
 
   ///获取年
   static int getYear() => DateTime.now().year;
