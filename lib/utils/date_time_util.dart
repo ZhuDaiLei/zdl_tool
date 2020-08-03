@@ -73,19 +73,19 @@ class DateTimeUtil {
 
   ///在当前时间下，指定往前、往后几天
   ///days > 0，为往后多少天；days < 0，为往前几天
-  static String getAssignDay({int days = 0}) {
+  static String getAssignDay({int days = 0, String format = formatDefault}) {
     int time;
     String end;
     if (days >= 0) {
       time = DateTime.now().add(Duration(days: days)).millisecondsSinceEpoch;
-      end = ' 23:59:59';
+      end = '23:59:59';
     } else {
       time = DateTime.now()
           .subtract(Duration(days: days.abs()))
           .millisecondsSinceEpoch;
-      end = ' 00:00:00';
+      end = '00:00:00';
     }
-    return '${time2str(time, format: formatYMD)}$end';
+    return time2str(time, format: format).replaceRange(11, 19, end);
   }
 
   ///获取今天开始的时间或者结束的时间
