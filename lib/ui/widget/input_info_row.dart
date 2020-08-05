@@ -77,8 +77,8 @@ class InputInfoRow extends StatelessWidget {
       maxLines: 1,
       readOnly: readOnly,
       inputFormatters: [
-        if (null != regStr) WhitelistingTextInputFormatter(RegExp(regStr)),
         if (null != maxLength) LengthLimitingTextInputFormatter(maxLength),
+        if (null != regStr) WhitelistingTextInputFormatter(RegExp(regStr)),
       ],
       decoration: InputDecoration(
         hintText: hintText,
