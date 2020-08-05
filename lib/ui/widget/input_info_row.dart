@@ -25,6 +25,7 @@ class InputInfoRow extends StatelessWidget {
   final GestureTapCallback onTap;
   final EdgeInsetsGeometry contentPadding;
   final bool required;
+  final ValueChanged<String> onChange;
 
   InputInfoRow({
     this.left,
@@ -46,6 +47,7 @@ class InputInfoRow extends StatelessWidget {
     this.onTap,
     this.contentPadding = const EdgeInsets.only(left: 10, top: 20, bottom: 20),
     this.required = false,
+    this.onChange,
   });
 
   @override
@@ -95,6 +97,7 @@ class InputInfoRow extends StatelessWidget {
         color: rightColor,
         fontSize: fontSize,
       ),
+      onChanged: onChange,
     );
     return InkWell(
       onTap: onTap,
