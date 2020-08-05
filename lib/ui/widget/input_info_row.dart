@@ -26,6 +26,8 @@ class InputInfoRow extends StatelessWidget {
   final EdgeInsetsGeometry contentPadding;
   final bool required;
   final ValueChanged<String> onChange;
+  final String regStr;
+  final int maxLength;
 
   InputInfoRow({
     this.left,
@@ -48,6 +50,8 @@ class InputInfoRow extends StatelessWidget {
     this.contentPadding = const EdgeInsets.only(left: 10, top: 20, bottom: 20),
     this.required = false,
     this.onChange,
+    this.regStr,
+    this.maxLength,
   });
 
   @override
@@ -66,10 +70,6 @@ class InputInfoRow extends StatelessWidget {
       );
     }
     bool readOnly = null != onTap;
-    Pattern reg;
-    if (inputType == TextInputType.number || inputType == TextInputType.phone || inputType == TextInputType.numberWithOptions(decimal: true)) {
-      reg = RegExp('[0-9.]');
-    }
     TextField textField = TextField(
       controller: editingController,
       textAlign: TextAlign.end,
@@ -77,7 +77,8 @@ class InputInfoRow extends StatelessWidget {
       maxLines: 1,
       readOnly: readOnly,
       inputFormatters: [
-        if (null != reg) WhitelistingTextInputFormatter(reg),
+        if (null != regStr) WhitelistingTextInputFormatter(RegExp(regStr)),
+        if (null != maxLength) LengthLimitingTextInputFormatter(maxLength),
       ],
       decoration: InputDecoration(
         hintText: hintText,
