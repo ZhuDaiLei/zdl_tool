@@ -67,7 +67,7 @@ class InputInfoRow extends StatelessWidget {
     }
     bool readOnly = null != onTap;
     Pattern reg;
-    if (inputType == TextInputType.number || inputType == TextInputType.phone) {
+    if (inputType == TextInputType.number || inputType == TextInputType.phone || inputType == TextInputType.numberWithOptions(decimal: true)) {
       reg = RegExp('[0-9.]');
     }
     TextField textField = TextField(
