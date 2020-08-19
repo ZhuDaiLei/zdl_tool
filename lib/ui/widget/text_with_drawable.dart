@@ -22,6 +22,7 @@ class TextWithDrawable extends StatelessWidget {
   final EdgeInsets margin;
   final Decoration decoration;
   final int maxLines;
+  final bool isFill;
 
   TextWithDrawable({
     this.text = '',
@@ -41,6 +42,7 @@ class TextWithDrawable extends StatelessWidget {
     this.margin,
     this.decoration,
     this.maxLines = 1,
+    this.isFill = false,
   });
 
   @override
@@ -68,7 +70,7 @@ class TextWithDrawable extends StatelessWidget {
             width: null == drawableStartPadding
                 ? drawablePadding
                 : drawableStartPadding),
-        txt,
+        isFill ? Expanded(child: txt) : txt,
         SizedBox(
             width: null == drawableEndPadding
                 ? drawablePadding
@@ -85,7 +87,7 @@ class TextWithDrawable extends StatelessWidget {
             height: null == drawableTopPadding
                 ? drawablePadding
                 : drawableTopPadding),
-        txt,
+        isFill ? Expanded(child: txt) : txt,
         SizedBox(
             height: null == drawableBottomPadding
                 ? drawablePadding
