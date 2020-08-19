@@ -121,6 +121,8 @@ class TextWithDrawable extends StatelessWidget {
       child = onlyRowWidget;
     }
     return Container(
+      width: isFill && onlyRow ? double.infinity : null,
+      height: isFill && onlyColumn ? double.infinity : null,
       padding: padding,
       margin: margin,
       decoration: decoration,
