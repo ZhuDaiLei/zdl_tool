@@ -18,8 +18,6 @@ class TextWithDrawable extends StatelessWidget {
   final double drawableEndPadding;
   final double drawableBottomPadding;
   final double drawablePadding;
-  final double width;
-  final double height;
   final EdgeInsets padding;
   final EdgeInsets margin;
   final Decoration decoration;
@@ -40,8 +38,6 @@ class TextWithDrawable extends StatelessWidget {
     this.drawableEndPadding,
     this.drawableBottomPadding,
     this.drawablePadding = 0,
-    this.width,
-    this.height,
     this.padding,
     this.margin,
     this.decoration,
@@ -125,8 +121,8 @@ class TextWithDrawable extends StatelessWidget {
       child = onlyRowWidget;
     }
     return Container(
-      width: width,
-      height: height,
+      width: isFill && onlyRow ? double.infinity : null,
+      height: isFill && onlyColumn ? double.infinity : null,
       padding: padding,
       margin: margin,
       decoration: decoration,
