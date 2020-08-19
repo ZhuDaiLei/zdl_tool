@@ -27,6 +27,7 @@ class InputInfoRow extends StatelessWidget {
   final bool required;
   final ValueChanged<String> onChange;
   final String regStr;
+  ///输入内容最大长度
   final int maxLength;
 
   InputInfoRow({

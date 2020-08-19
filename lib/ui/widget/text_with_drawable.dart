@@ -20,6 +20,7 @@ class TextWithDrawable extends StatelessWidget {
   final double drawablePadding;
   final EdgeInsets padding;
   final EdgeInsets margin;
+  final Decoration decoration;
   final int maxLines;
 
   TextWithDrawable({
@@ -38,6 +39,7 @@ class TextWithDrawable extends StatelessWidget {
     this.drawablePadding = 0,
     this.padding,
     this.margin,
+    this.decoration,
     this.maxLines = 1,
   });
 
@@ -119,6 +121,7 @@ class TextWithDrawable extends StatelessWidget {
     return Container(
       padding: padding,
       margin: margin,
+      decoration: decoration,
       child: child,
     );
   }
