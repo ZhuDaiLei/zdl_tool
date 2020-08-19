@@ -68,7 +68,7 @@ class TextWithDrawable extends StatelessWidget {
             width: null == drawableStartPadding
                 ? drawablePadding
                 : drawableStartPadding),
-        Expanded(child: txt),
+        txt,
         SizedBox(
             width: null == drawableEndPadding
                 ? drawablePadding
@@ -85,7 +85,7 @@ class TextWithDrawable extends StatelessWidget {
             height: null == drawableTopPadding
                 ? drawablePadding
                 : drawableTopPadding),
-        Expanded(child: txt),
+        txt,
         SizedBox(
             height: null == drawableBottomPadding
                 ? drawablePadding
