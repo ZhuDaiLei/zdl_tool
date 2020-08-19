@@ -20,10 +20,10 @@ class TextVariable extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _TextVariableState createState() => _TextVariableState();
+  TextVariableState createState() => TextVariableState();
 }
 
-class _TextVariableState extends State<TextVariable> {
+class TextVariableState extends State<TextVariable> {
   String _txt;
 
   @override
