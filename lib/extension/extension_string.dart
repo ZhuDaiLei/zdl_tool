@@ -132,4 +132,18 @@ extension ExtensionString on String {
 
   ///获取图片地址
   String get toImgAsset => this.isImg ? 'assets/$this' : 'assets/$this.png';
+
+  ///替换除第一个的所有
+  String replaceExceptFirst(Pattern replace){
+    if(this.contains(replace)){
+      List<String> arr = this.split(replace);
+      String value='';
+      for(String str in arr){
+        value += '$str${value.contains(replace) ? '' : replace}';
+      }
+      return value;
+    }else{
+      return this;
+    }
+  }
 }

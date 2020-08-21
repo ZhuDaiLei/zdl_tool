@@ -1,10 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 /// @author zdl
 /// date 2020/7/15 15:21
 /// email zdl328465042@163.com
 /// description 路由跳转工具类
 class IntentUtil {
+
+  static finish(BuildContext context, {Object data}) {
+    if (Navigator.canPop(context)) {
+      return Navigator.of(context).pop(data);
+    } else {
+      return SystemNavigator.pop();
+    }
+  }
+
   static Future fishPush(
     BuildContext ctx, {
     String routeName,
