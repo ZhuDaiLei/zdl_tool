@@ -4,6 +4,8 @@ export 'package:zdl_tool/ui/widget/text_with_bg.dart';
 export 'package:zdl_tool/ui/widget/text_with_drawable.dart';
 export 'package:zdl_tool/ui/widget/show_info_row.dart';
 export 'package:zdl_tool/ui/widget/input_info_row.dart';
+export 'package:zdl_tool/ui/widget/dialog/dialog_show_info.dart';
+export 'package:zdl_tool/ui/widget/dialog/dialog_input_info.dart';
 
 
 
