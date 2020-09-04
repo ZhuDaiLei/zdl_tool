@@ -125,7 +125,7 @@ class _DialogInputInfoState extends State<DialogInputInfo> {
           if (null != widget.whitelisting)
             WhitelistingTextInputFormatter(RegExp(widget.whitelisting)),
           if (null != widget.blacklisting)
-            WhitelistingTextInputFormatter(RegExp(widget.blacklisting)),
+            BlacklistingTextInputFormatter(RegExp(widget.blacklisting)),
           if (null != widget.decimalDigits)
             DecimalDigitsTextInputFormatter(widget.decimalDigits),
         ],
