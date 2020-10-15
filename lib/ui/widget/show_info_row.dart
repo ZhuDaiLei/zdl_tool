@@ -6,7 +6,9 @@ import 'package:flutter/material.dart';
 /// description 通用的左右布局信息展示
 class ShowInfoRow extends StatelessWidget {
   final String left;
+  final Widget leftWidget;
   final String right;
+  final Widget rightWidget;
   final int leftFlex;
   final int rightFlex;
   final Color bgColor;
@@ -20,7 +22,9 @@ class ShowInfoRow extends StatelessWidget {
 
   ShowInfoRow({
     this.left,
+    this.leftWidget,
     this.right,
+    this.rightWidget,
     this.leftFlex = 1,
     this.rightFlex = 2,
     this.bgColor = Colors.transparent,
@@ -45,32 +49,34 @@ class ShowInfoRow extends StatelessWidget {
         children: <Widget>[
           Expanded(
             flex: leftFlex,
-            child: Text(
-              left,
-              textAlign: TextAlign.start,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              style: TextStyle(
-                color: leftColor,
-                fontSize: fontSize,
-                fontWeight: leftFontWeight,
-              ),
-            ),
+            child: leftWidget ??
+                Text(
+                  left,
+                  textAlign: TextAlign.start,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    color: leftColor,
+                    fontSize: fontSize,
+                    fontWeight: leftFontWeight,
+                  ),
+                ),
           ),
           SizedBox(width: 10),
           Expanded(
             flex: rightFlex,
-            child: Text(
-              right,
-              textAlign: TextAlign.end,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              style: TextStyle(
-                color: rightColor,
-                fontSize: fontSize,
-                fontWeight: rightFontWeight,
-              ),
-            ),
+            child: rightWidget ??
+                Text(
+                  right,
+                  textAlign: TextAlign.end,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    color: rightColor,
+                    fontSize: fontSize,
+                    fontWeight: rightFontWeight,
+                  ),
+                ),
           ),
         ],
       ),

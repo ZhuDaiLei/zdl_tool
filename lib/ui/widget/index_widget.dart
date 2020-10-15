@@ -1,4 +1,4 @@
-//export 'package:zdl_tool/ui/widget/visibility_extend.dart';
+export 'package:zdl_tool/ui/widget/visibility_extend.dart';
 export 'package:zdl_tool/ui/widget/line.dart';
 export 'package:zdl_tool/ui/widget/dashed_line.dart';
 export 'package:zdl_tool/ui/widget/text_with_bg.dart';
