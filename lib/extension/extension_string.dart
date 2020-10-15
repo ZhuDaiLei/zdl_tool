@@ -75,27 +75,29 @@ extension ExtensionString on String {
   ///字符串转颜色
   Color toColor({double alpha, Color defaultColor = const Color(0xff333333)}) {
     try {
+      String alphaRadix = 'ff';
+      if(null != alpha && 0 <= alpha && 1 > alpha){
+        alphaRadix = (alpha * 100).toInt().toRadixString(16);
+      }
       switch (this.dealNull.length) {
         case 0:
           return defaultColor;
           break;
         case 3:
           return Color(int.parse(
-                  '${this.findChar(1) * 2}${this.findChar(2) * 2}${this.findChar(3) * 2}',
-                  radix: 16) +
-              0xff000000);
+                  '$alphaRadix${this.findChar(1) * 2}${this.findChar(2) * 2}${this.findChar(3) * 2}',
+                  radix: 16));
           break;
         case 4:
           return Color(int.parse(
-                  '${this.findChar(2) * 2}${this.findChar(3) * 2}${this.findChar(4) * 2}',
-                  radix: 16) +
-              0xff000000);
+                  '$alphaRadix${this.findChar(2) * 2}${this.findChar(3) * 2}${this.findChar(4) * 2}',
+                  radix: 16));
           break;
         case 6:
-          return Color(int.parse(this, radix: 16) + 0xff000000);
+          return Color(int.parse('$alphaRadix$this', radix: 16));
           break;
         case 7:
-          return Color(int.parse(this.substring(1, 7), radix: 16) + 0xff000000);
+          return Color(int.parse('$alphaRadix${this.substring(1, 7)}', radix: 16));
           break;
         case 8:
           return Color(int.parse(this.substring(0, 8), radix: 16));
