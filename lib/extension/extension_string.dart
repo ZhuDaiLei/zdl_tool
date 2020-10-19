@@ -117,7 +117,7 @@ extension ExtensionString on String {
 
   ///处理后台返回数据有可能为空的情况
   ///def 默认值
-  String dealData({String def = ''}) => this.isNull ? def : this;
+  String dealData({String def = '无'}) => this.isNull ? def : this;
 
   ///获取字符串中年
   String get getYear => this.dealNull.length >= 4 ? this.substring(0, 4) : '';
