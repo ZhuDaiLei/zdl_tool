@@ -37,54 +37,52 @@ class TextWithBg extends StatelessWidget {
   TextWithBg({
     this.width,
     this.height,
-    this.alignment = Alignment.center,
+    this.alignment,
     this.padding,
     this.margin,
     this.text = "",
     this.fontSize = 14,
     this.fontColor,
-    this.fontWeight = FontWeight.normal,
-    this.textAlign = TextAlign.center,
+    this.fontWeight,
+    this.textAlign,
     this.bgImg,
     this.bgColor,
     this.border,
     this.borderRadius,
     this.boxShadow,
-    this.shape = BoxShape.rectangle,
+    this.shape,
     this.gradient,
     this.maxLines = 1,
   });
 
   @override
   Widget build(BuildContext context) {
-    return UnconstrainedBox(
-      child: Container(
-        width: width,
-        height: height,
-        alignment: alignment,
-        padding: padding,
-        margin: margin,
-        decoration: BoxDecoration(
-          image: null == bgImg
-              ? null
-              : DecorationImage(image: AssetImage(bgImg), fit: BoxFit.cover),
-          color: bgColor,
-          border: border,
-          borderRadius: borderRadius,
-          boxShadow: boxShadow,
-          shape: shape,
-          gradient: gradient,
-        ),
-        child: Text(
-          text,
-          maxLines: maxLines,
-          overflow: TextOverflow.ellipsis,
-          textAlign: textAlign,
-          style: TextStyle(
-            fontSize: fontSize,
-            color: fontColor,
-            fontWeight: fontWeight,
-          ),
+    return Container(
+      width: width,
+      height: height,
+      alignment: alignment,
+      padding: padding,
+      margin: margin,
+      decoration: BoxDecoration(
+        image: null == bgImg
+            ? null
+            : DecorationImage(image: AssetImage(bgImg), fit: BoxFit.cover),
+        color: bgColor,
+        border: border,
+        borderRadius: borderRadius,
+        boxShadow: boxShadow,
+        shape: shape,
+        gradient: gradient,
+      ),
+      child: Text(
+        text,
+        maxLines: maxLines,
+        overflow: TextOverflow.ellipsis,
+        textAlign: textAlign,
+        style: TextStyle(
+          fontSize: fontSize,
+          color: fontColor,
+          fontWeight: fontWeight,
         ),
       ),
     );
