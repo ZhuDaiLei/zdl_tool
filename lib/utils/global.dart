@@ -9,42 +9,34 @@ import 'package:zdl_tool/extension/extension_string.dart';
 /// description
 
 class Global {
-
   ///处理接口返回字符串
   @Deprecated('please use ExtensionString dealData')
-  static String dealNull(String msg, {String defaultMsg = '无'}) =>  isEmpty(msg) ? defaultMsg : msg;
+  static String dealNull(String msg, {String defaultMsg = '无'}) =>
+      isEmpty(msg) ? defaultMsg : msg;
 
   ///判空
-  static bool isEmpty(var data) {
-    if(null == data){
+  static bool isEmpty(data) {
+    if (null == data) {
       return true;
     }
-    switch (data.runtimeType.toString()) {
-      case 'String':
-        return '' == (data as String).trim();
-        break;
-      case 'int':
-        return true;
-        break;
-      case 'List':
-        return (data as List).isEmpty;
-        break;
-      case 'Map':
-        return (data as Map).isEmpty;
-        break;
-      default:
-        return false;
-        break;
+    if (data is String) {
+      return 0 == data.trim().length;
+    } else if (data is List) {
+      return data.isEmpty;
+    } else if (data is Map) {
+      return data.isEmpty;
     }
+    return true;
   }
 
   ///双击退出APP
   static int last = 0;
+
   static Future<bool> doubleClickBack(Function onClickBack) {
     int now = DateTime.now().millisecondsSinceEpoch;
     if (now - last > 1000) {
       last = DateTime.now().millisecondsSinceEpoch;
-      if(null != onClickBack) onClickBack;
+      if (null != onClickBack) onClickBack;
       return Future.value(false);
     } else {
       return Future.value(true);
