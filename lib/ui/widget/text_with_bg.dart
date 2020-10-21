@@ -50,7 +50,7 @@ class TextWithBg extends StatelessWidget {
     this.border,
     this.borderRadius,
     this.boxShadow,
-    this.shape,
+    this.shape = BoxShape.rectangle,
     this.gradient,
     this.maxLines = 1,
   });
