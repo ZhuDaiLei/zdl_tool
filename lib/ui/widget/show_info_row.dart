@@ -47,6 +47,10 @@ class ShowInfoRow extends StatelessWidget {
       color: bgColor,
       padding: padding,
       margin: margin,
+      decoration: BoxDecoration(
+        color: bgColor,
+        borderRadius: borderRadius,
+      ),
       child: Flex(
         direction: Axis.horizontal,
         crossAxisAlignment: CrossAxisAlignment.center,
