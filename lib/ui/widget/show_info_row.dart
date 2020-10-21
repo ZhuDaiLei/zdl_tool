@@ -12,6 +12,7 @@ class ShowInfoRow extends StatelessWidget {
   final int leftFlex;
   final int rightFlex;
   final Color bgColor;
+  final BorderRadiusGeometry borderRadius;
   final EdgeInsetsGeometry padding;
   final EdgeInsetsGeometry margin;
   final Color leftColor;
@@ -29,6 +30,7 @@ class ShowInfoRow extends StatelessWidget {
     this.leftFlex = 1,
     this.rightFlex = 2,
     this.bgColor = Colors.transparent,
+    this.borderRadius,
     this.padding,
     this.margin,
     this.leftColor = const Color(0xff333333),
