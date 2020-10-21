@@ -16,7 +16,8 @@ class ShowInfoRow extends StatelessWidget {
   final EdgeInsetsGeometry margin;
   final Color leftColor;
   final Color rightColor;
-  final double fontSize;
+  final double leftFontSize;
+  final double rightFontSize;
   final FontWeight leftFontWeight;
   final FontWeight rightFontWeight;
 
@@ -32,7 +33,8 @@ class ShowInfoRow extends StatelessWidget {
     this.margin,
     this.leftColor = const Color(0xff333333),
     this.rightColor = const Color(0xff666666),
-    this.fontSize = 14,
+    this.leftFontSize = 14,
+    this.rightFontSize = 14,
     this.leftFontWeight = FontWeight.w600,
     this.rightFontWeight = FontWeight.normal,
   });
@@ -57,7 +59,7 @@ class ShowInfoRow extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     color: leftColor,
-                    fontSize: fontSize,
+                    fontSize: leftFontSize,
                     fontWeight: leftFontWeight,
                   ),
                 ),
@@ -73,7 +75,7 @@ class ShowInfoRow extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     color: rightColor,
-                    fontSize: fontSize,
+                    fontSize: rightFontSize,
                     fontWeight: rightFontWeight,
                   ),
                 ),
