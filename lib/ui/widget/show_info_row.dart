@@ -44,7 +44,6 @@ class ShowInfoRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: bgColor,
       padding: padding,
       margin: margin,
       decoration: BoxDecoration(
