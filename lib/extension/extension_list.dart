@@ -1,4 +1,4 @@
-
+import 'extension_string.dart';
 
 /// @author zdl
 /// date 2020/10/22 14:50
@@ -10,8 +10,8 @@ extension ExtensionList on List{
 
   List get dealNotList => isList ? this : [];
 
-  String toStringWith({String splitUnit = '、'}){
+  String toStringWith({String splitUnit = '、', String def = '无'}){
     String str = this.dealNotList.toString();
-    return str.substring(1, str.length-1).replaceAll(', ', splitUnit);
+    return str.substring(1, str.length-1).replaceAll(', ', splitUnit).dealData(def: def);
   }
 }
