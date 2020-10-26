@@ -21,6 +21,7 @@ class ShowInfoRow extends StatelessWidget {
   final double rightFontSize;
   final FontWeight leftFontWeight;
   final FontWeight rightFontWeight;
+  final GestureTapCallback onTap;
 
   ShowInfoRow({
     this.left,
@@ -39,11 +40,12 @@ class ShowInfoRow extends StatelessWidget {
     this.rightFontSize = 14,
     this.leftFontWeight = FontWeight.w600,
     this.rightFontWeight = FontWeight.normal,
+    this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    Widget view = Container(
       padding: padding,
       margin: margin,
       decoration: BoxDecoration(
@@ -88,5 +90,15 @@ class ShowInfoRow extends StatelessWidget {
         ],
       ),
     );
+    Widget child;
+    if (null == onTap) {
+      child = view;
+    } else {
+      child = InkWell(
+        onTap: onTap,
+        child: view,
+      );
+    }
+    return child;
   }
 }
