@@ -15,6 +15,7 @@ class InputInfoRow extends StatelessWidget {
   final int leftFlex;
   final int rightFlex;
   final Color bgColor;
+  final EdgeInsetsGeometry padding;
   final EdgeInsetsGeometry margin;
   final Color leftColor;
   final Color rightColor;
@@ -40,6 +41,7 @@ class InputInfoRow extends StatelessWidget {
     this.leftFlex = 1,
     this.rightFlex = 2,
     this.bgColor = Colors.transparent,
+    this.padding,
     this.margin,
     this.leftColor = const Color(0xff333333),
     this.rightColor = const Color(0xff666666),
@@ -106,6 +108,7 @@ class InputInfoRow extends StatelessWidget {
       child: Container(
         color: bgColor,
         margin: margin,
+        padding: padding,
         child: Flex(
           direction: Axis.horizontal,
           crossAxisAlignment: CrossAxisAlignment.center,
