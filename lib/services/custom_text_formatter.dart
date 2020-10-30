@@ -18,7 +18,7 @@ class DecimalDigitsTextInputFormatter extends TextInputFormatter {
     TextEditingValue oldValue,
     TextEditingValue newValue,
   ) {
-    String newTxt = newValue.text.replaceExceptFirst('.');
+    String newTxt = newValue.text.replaceExceptFirst('.', '');
     List<String> newArr = newTxt.split('.');
     if(newArr.length != 1 && newArr[1].length > decimalDigits){
       String value = '${newArr[0]}.${newArr[1].substring(0, decimalDigits)}';

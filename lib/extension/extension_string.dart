@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'dart:ui';
 import 'package:convert/convert.dart';
 import 'package:crypto/crypto.dart';
-import 'package:zdl_tool/utils/color_util.dart';
 
 /// @author zdl
 /// date 2020/3/31 18:19
@@ -76,7 +75,7 @@ extension ExtensionString on String {
   Color toColor({double alpha, Color defaultColor = const Color(0xff333333)}) {
     try {
       String alphaRadix = 'ff';
-      if(null != alpha && 0 <= alpha && 1 > alpha){
+      if (null != alpha && 0 <= alpha && 1 > alpha) {
         alphaRadix = (alpha * 100).toInt().toRadixString(16);
       }
       switch (this.dealNull.length) {
@@ -85,19 +84,20 @@ extension ExtensionString on String {
           break;
         case 3:
           return Color(int.parse(
-                  '$alphaRadix${this.findChar(1) * 2}${this.findChar(2) * 2}${this.findChar(3) * 2}',
-                  radix: 16));
+              '$alphaRadix${this.findChar(1) * 2}${this.findChar(2) * 2}${this.findChar(3) * 2}',
+              radix: 16));
           break;
         case 4:
           return Color(int.parse(
-                  '$alphaRadix${this.findChar(2) * 2}${this.findChar(3) * 2}${this.findChar(4) * 2}',
-                  radix: 16));
+              '$alphaRadix${this.findChar(2) * 2}${this.findChar(3) * 2}${this.findChar(4) * 2}',
+              radix: 16));
           break;
         case 6:
           return Color(int.parse('$alphaRadix$this', radix: 16));
           break;
         case 7:
-          return Color(int.parse('$alphaRadix${this.substring(1, 7)}', radix: 16));
+          return Color(
+              int.parse('$alphaRadix${this.substring(1, 7)}', radix: 16));
           break;
         case 8:
           return Color(int.parse(this.substring(0, 8), radix: 16));
@@ -136,15 +136,15 @@ extension ExtensionString on String {
   String get toImgAsset => this.isImg ? 'assets/$this' : 'assets/$this.png';
 
   ///替换除第一个的所有
-  String replaceExceptFirst(Pattern replace){
-    if(this.contains(replace)){
-      List<String> arr = this.split(replace);
-      String value='';
-      for(String str in arr){
-        value += '$str${value.contains(replace) ? '' : replace}';
-      }
+  String replaceExceptFirst(Pattern from, String replace) {
+    if (this.contains(from)) {
+      List<String> arr = this.split(from);
+      String value = '';
+      arr.forEach((f) {
+        value += '$f${value.contains(from) ? replace : from}';
+      });
       return value;
-    }else{
+    } else {
       return this;
     }
   }
